@@ -6,3 +6,4 @@
 #git push를 통해서 github에 넣음
 #rm -f .git/index.lock
 #https://stackoverflow.com/questions/38004148/#another-git-process-seems-to-be-running-in-this-repository 참고
+//////// git push origin main
