@@ -5,8 +5,10 @@ from itertools import permutations
 #input = sys.stdin.readline
 
 want = int(input())                 #내가 원하는 채널번호
-M = int(input())         
-array=list(map(int,input().split()))    #버튼누를수 없는거
+M = int(input())
+array=[]
+if M != 0:         
+    array=list(map(int,input().split()))    #버튼누를수 없는거
 count=abs(100-want)     #일단 먼저 100부터 세는거를 count에 입력.
 for i in range(1000000):         #간단하게 정할수있는채널에서 위아래로 50만씩 검사.
     now_number = str(i)                  #반례를 통해 알게됨.ex) 500,000 5 12345 일경우. 600000만에서 
