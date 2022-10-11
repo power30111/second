@@ -29,13 +29,6 @@ def test():
             a=XYZ(i+1,j+1)
             Sum+=int(a)
     return Sum
-#def fail():
-    for i in range(N+2):
-        check[i][0] = False
-        check[i][-1] =False
-    for i in range(M+2):
-        check[0][i] = False
-        check[-1][i] =False
 #T = test time
 #M 밭의 가로길이 N 밭의 세로길이 K배추의 개수 이후로 차례대로 배추가 심어져있는 좌표 입력
 #(1,1)의 좌표가 가장 왼쪽위 이다.
@@ -48,7 +41,5 @@ for time in range(T):
         W,L = map(int,input().split())  #L가로 W 세로
         array[L+1][W+1]=1
         check[L+1][W+1]=True
-    #fail()
     result=test()
     print(result)
-#나이따~

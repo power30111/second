@@ -1,4 +1,4 @@
-https://www.acmicpc.net/problem/1620
+#https://www.acmicpc.net/problem/1620
 import sys
 #from collections import deque
 input = sys.stdin.readline
