@@ -13,4 +13,8 @@ for i in range(T):
         for k in range(len(A[j])-1,-1,-1):
             print(A[j][k],end="")
         print(end=" ")
+<<<<<<< HEAD
     print()
+=======
+    print()
+>>>>>>> df55620a48a00c482ad62cc9f8591978b3ce83b0
