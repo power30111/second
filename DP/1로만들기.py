@@ -19,3 +19,4 @@ for i in range(2,N+1):
     if i% 3==0: #3로 나눠질경우 1빼서 계산한게 더적어? 아니면 여기서 계산한게 더적어???
         array[i] = min(array[i],array[i//3]+1)
 print(array[N])
+print(array)
