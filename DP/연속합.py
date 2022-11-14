@@ -14,25 +14,8 @@ input = sys.stdin.readline
 
 N=int(input())
 array=list(map(int,input().split()))
-compare,negative,now=[],[],[]
-i,result,j=0,0,0
-while i<N:
-    if array[i]>0:      #양수일경우 더하기.
-        now.append(array[i])
-    else:               #음수일경우 비교
-        negative.append(array[i])
-        j=i+1
-        while j<N:
-            if array[j]>0:
-                compare.append(array[j])
-            else:
-                break
-            j+=1
-    result=max(sum(compare),sum(now)+result,sum(compare)+result+sum(negative))
-    compare,negative,now=[],[],[]
-    if j>0:
-        i=j
-        j=0
-    else:
-        i+=1
-print(result)
+DP=[0]*N
+DP[0]=array[0]
+for i in range(1,N):
+    DP[i]=max(DP[i-1]+array[i],array[i])
+print(max(DP))
