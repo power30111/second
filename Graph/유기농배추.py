@@ -1,4 +1,5 @@
 #https://www.acmicpc.net/problem/1012
+#DFS,BFS 알고리즘에 대해서 모를때 풀이.
 import sys
 from collections import deque
 input = sys.stdin.readline

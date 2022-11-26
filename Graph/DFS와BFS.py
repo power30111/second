@@ -19,6 +19,7 @@ def DFS(array,V,visit):
     for i in array[V]:
         if not visit[i]:
             DFS(array,i,visit)
+            
 def BFS(array,V,visit):
     Q = deque([V])
     visit[V]=True
