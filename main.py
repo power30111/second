@@ -5,7 +5,7 @@ input = sys.stdin.readline
 #위에 import 부분 복사용
 #타입힌트 사용하기 ex) A:int=input() ....
 알아둬야할 표준 라이브러리 목록.
-#itertools      #반복되는 형태의 데이터를 처리하기 위한 기능들 포함 ex)순열,조합 등등..
+#itertools      #반복되는 형태의 데이터를 처리하기 위한 기능들 포함 ex)순열(permutations),조합(combination) 등등..
 #heapq          #힙(Heap)자료구조를 제공함 ex)우선순위 큐 등등..
 #bisect         #이진탐색(Binary Search)기능을 제공한다.
 #collections    #덱(deque),카운터(Counter)등등 유용한 자료구조를 제공한다.
