@@ -20,6 +20,7 @@ ex) {A,B,C}에서 세개를 선택하여 나열하는경우.=ABC,ACB,BAC,BCA,CAB
 ex) {A,B,C}에서 순서를 고려하지 않고 두 개를 뽑는 경우=AB,AC,BC
 조합의 수는 nCr => n*(n-1)*(n-2)...*(n-r+1)/r! 
 
+#파이썬에서 함수주석은 """ 로 시작한다.
 
 ########################################
 https://cafe.naver.com/startdevelopercareer?iframe_url_utf8=%2FArticleRead.nhn%3FreferrerAllArticles%3Dtrue%26clubid%3D30372458%26articleid%3D6
