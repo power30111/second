@@ -1,7 +1,7 @@
 import sys
 from collections import deque,Counter
 input = sys.stdin.readline
-
+sys.setrecursionlimit(100000)
 #위에 import 부분 복사용
 #타입힌트 사용하기 ex) A:int=input() ....
 알아둬야할 표준 라이브러리 목록.
