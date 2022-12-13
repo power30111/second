@@ -29,16 +29,17 @@ def BFS(virus,array):
         Q.append([virus[i][0],virus[i][1]])
     while Q:
         x,y=Q.popleft()
-
         for i in range(4):
             now_x=x+dis_x[i]
             now_y=y+dis_y[i]
-            if now_x<0 or now_y<0 or now_x>=M or now_y>=N:
+            if now_x<0 or now_y<0 or now_x>=N or now_y>=M:
+
                 continue
             if now_map[now_x][now_y]==1 or now_map[now_x][now_y]==2:
                 continue
-            Q.append([now_x,now_y])
-            now_map[now_x][now_y]=2
+            else:
+                Q.append([now_x,now_y])
+                now_map[now_x][now_y]=2
             
     for i in range(N):
         for j in range(M):
@@ -56,5 +57,5 @@ for i in combinations(empty,3):
     if result<cnt:
         result=cnt
         
-
+        
 print(result)
