@@ -59,3 +59,55 @@ for i in combinations(empty,3):
         
         
 print(result)
+
+##문제 풀이
+from collections import deque
+from itertools import combinations, permutations
+import sys,copy
+input=sys.stdin.readline
+
+N,M=map(int,input().split())
+
+array=[[]for i in range(N)]
+virus=deque()
+wall,now=[],0
+dis_x=[0,0,1,-1]
+dis_y=[1,-1,0,0]
+for i in range(N):
+    array[i]=input().split()
+    for j in range(M):
+        if array[i][j] == '2':
+            virus.append([i,j])
+        if array[i][j] == '0':
+            wall.append([i,j])
+
+def BFS(wall_list,N,M):  #바이러스 전염경로
+    labo=copy.deepcopy(array)
+    for i in range(3):
+        labo[int(wall_list[i][0])][int(wall_list[i][1])]='1'
+    stack=deque(virus)
+    cnt=0
+    while stack:
+        x,y=stack.popleft()
+        for i in range(4):
+            now_x=x+dis_x[i]
+            now_y=y+dis_y[i]
+            if now_x<0 or now_y <0 or now_x>=N or now_y>=M:
+                continue
+            if labo[now_x][now_y]=="1" or labo[now_x][now_y]=="2":
+                continue
+            labo[now_x][now_y]='2'
+            stack.append([now_x,now_y])
+    for i in range(N):
+        for j in range(M):
+            if labo[i][j]=="0":
+                cnt+=1
+    return cnt
+test=[[0,1],[1,0],[3,5]]
+for i in combinations(wall,3):
+    wall_list=i
+    now_cnt=BFS(wall_list,N,M)
+    if now<now_cnt:
+        now=now_cnt
+print(now)
+
