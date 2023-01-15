@@ -1,0 +1,39 @@
+#https://www.acmicpc.net/problem/1780
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+array=[[] for i in range(N)]
+for i in range(N):
+    array[i]=input().split()
+zero,one,deone =0,0,0
+def check(x:int,y:int,N:int):
+    standard=array[x][y]
+    for i in range(x,x+N):
+        for j in range(y,y+N):
+            if standard != array[i][j]:
+                return False
+    return True
+def rec(array:list,x:int,y:int,N:int):
+    global zero,one,deone
+    if check(x,y,N):
+        if array[x][y] == '0':
+            zero +=1
+        elif array[x][y] == '1':
+            one +=1
+        else:
+            deone +=1
+        return
+    rec(array,x,y,N//3)
+    rec(array,x+N//3,y,N//3)
+    rec(array,x+(N+N)//3,y,N//3)
+    rec(array,x,y+N//3,N//3)
+    rec(array,x,y+(N+N)//3,N//3)
+    rec(array,x+N//3,y+N//3,N//3)
+    rec(array,x+(N+N)//3,y+N//3,N//3)
+    rec(array,x+N//3,y+(N+N)//3,N//3)
+    rec(array,x+(N+N)//3,y+(N+N)//3,N//3)
+rec(array,0,0,N)
+print(deone)
+print(zero)
+print(one)
