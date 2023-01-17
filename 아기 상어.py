@@ -19,15 +19,15 @@ for i in range(N):
             baby_shark=[i,j]
             array[i][j]='0'
 
-def BFS(size,time,baby_shark):
+def BFS(size,time):
+    global baby_shark
     fishbowl=copy.deepcopy(array)
     Queue=deque()
     Queue.append([baby_shark[0],baby_shark[1]])
     eat_count=0
+    can_eat_list=[]
     while Queue:
         x,y=Queue.popleft()
-        if size==3:
-            print("hi")
         if eat_count == size:
             size+=1
             eat_count=0
@@ -39,20 +39,43 @@ def BFS(size,time,baby_shark):
                 continue
             if int(fishbowl[now_x][now_y])>size:                     #내 크기보다 큰곳은 안갈꺼야
                 continue
-            if int(fishbowl[now_x][now_y])<size and int(fishbowl[now_x][now_y])!= 0:                     #나보다 작은 곳 발견하면 먹을꺼임.
+            if int(fishbowl[now_x][now_y])<size and int(fishbowl[now_x][now_y])!= 0:
+                Queue.append([x,y])
+                while Queue:
+                    x,y=Queue.popleft()
+                    for i in range(4):
+                        now_x=int(x)+dis_x[i]
+                        now_y=int(y)+dis_y[i]
+                    
+                        if now_x < 0 or now_y < 0 or now_x>=N or now_y>=N:  #어항을 벗어나지않아
+                            continue
+                        if int(fishbowl[now_x][now_y])>size:                     #내 크기보다 큰곳은 안갈꺼야
+                            continue
+                        if int(fishbowl[now_x][now_y])<size and int(fishbowl[now_x][now_y])!= 0:
+                            can_eat_list.append([now_x,now_y])
+                dx,dy=can_eat_list[0][0],can_eat_list[0][1]
+                for i in range(len(can_eat_list)):
+                    if int(dx) > int(can_eat_list[i][0]):
+                        dx=int(can_eat_list[i][0])
+                        dy=int(can_eat_list[i][1])
+                    elif int(dx) == int(can_eat_list[i][0]):
+                        if int(dy) > int(can_eat_list[i][1]):
+                            dy=int(can_eat_list[i][1])
+                            dx=int(can_eat_list[i][0])
                 eat_count+=1
-                time+=abs(int(baby_shark[0])-now_x)+abs(int(baby_shark[1])-now_y)
-                array[now_x][now_y]='9'
+                time+=abs(int(baby_shark[0])-dx)+abs(int(baby_shark[1])-dy)
+                array[dx][dy]='9'
                 array[baby_shark[0]][baby_shark[1]]='0'
                 fishbowl=copy.deepcopy(array)
-                baby_shark=[now_x,now_y]
+                baby_shark=[dx,dy]
                 Queue=deque()
                 Queue.append([baby_shark[0],baby_shark[1]])
+                can_eat_list=[]
                 break
             Queue.append([now_x,now_y])
             fishbowl[now_x][now_y]='100'
     return time
 
-print(BFS(size,time,baby_shark))
+print(BFS(size,time))
 
             
