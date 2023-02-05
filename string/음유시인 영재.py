@@ -1,17 +1,16 @@
 #https://www.acmicpc.net/problem/19948
 import sys
 
-sentence = input()              #주어진 문장
+sentence = list(input())              #주어진 문장
 N=int(input())                          #스페이스바 사용가능 횟수
 keyboard=list(map(int,input().split())) #키보드 사용가능 횟수
-title=[]                                #제목
-
+title=[sentence[0].upper()]                                #제목
 def check(x):
     global N
     if x == ' ':
         if N == 0:
             print("-1")
-            return
+            exit()
         else:
             N-=1
             return
@@ -32,16 +31,23 @@ def check(x):
             else:
                 print("-1")
                 exit()
-        
-for i in sentence:
-    x=i[0]
-    title.append(x.upper())
-    for j in range(1,len(i)):
-        x=i[j]
-        if x == i[j-1]:
-            continue
-        check(x)
+x=sentence[0]
+check(x)
+for i in range(1,len(sentence)):
+    y = sentence[i]
+    if y == x:  #전꺼랑 다르면
+        continue
+    check(y)            #check
+    if x == ' ':
+        title.append(y.upper())
+    x=y
 
-for i in title:
-    check(i)
+check(title[0])
+
+for i in range(1,len(title)):
+    x=title[i]
+    if x == title[i-1]:
+        continue
+    check(x)
+
 print(''.join(title))
